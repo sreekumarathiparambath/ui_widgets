@@ -27,7 +27,6 @@ class _HomeScreenState extends State<HomeScreen> {
         automaticallyImplyLeading: false,
         backgroundColor: Colors.redAccent,
         bottom: AppBar(),
-        bottomOpacity: 0.5,
         brightness: Brightness.dark,
         elevation: 1.0,
         flexibleSpace: Image.network(
@@ -52,6 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
           button: TextStyle(color: Colors.blue),
         ),
       ),
+      backgroundColor: Color(0xFF42A5F5),
     );
   }
 }
