@@ -8,50 +8,113 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Home'),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.access_alarm),
-            onPressed: () {},
-          ),
-          MaterialButton(
-            child: Text(
-              'Profile',
-              style: TextStyle(color: Colors.white),
+    return DefaultTabController(
+      length: 4,
+      child: Scaffold(
+        body: TabBarView(
+          children: [
+            CircleAvatar(
+              backgroundImage: NetworkImage(
+                  'https://img.gadgethacks.com/img/08/26/63643331021647/0/easy-way-clean-up-your-whatsapp-chat-logs.w1456.jpg'),
             ),
-            onPressed: () {},
-          )
-        ],
-        automaticallyImplyLeading: false,
-        backgroundColor: Colors.redAccent,
-        bottom: AppBar(),
-        brightness: Brightness.dark,
-        elevation: 1.0,
-        flexibleSpace: Image.network(
-          'https://yt3.ggpht.com/a/AGF-l7-pLWHhqjLR5ZVoKzV9_eU6IjYrDyhvSLRjsw=s900-c-k-c0xffffffff-no-rj-mo',
-        ),
-        iconTheme: IconThemeData(color: Colors.black, opacity: 1.0),
-        leading: IconButton(
-          icon: CircleAvatar(
-            backgroundImage: NetworkImage(
-              'https://cdn.vox-cdn.com/thumbor/DVN7eqE1o8HeBOP-jg15YHTsiLY=/0x0:640x427/1200x800/filters:focal(0x0:640x427)/cdn.vox-cdn.com/assets/1496753/stevejobs.jpg',
+            Icon(
+              Icons.music_video,
+              size: 100,
             ),
-          ),
-          onPressed: () {
-            print('Open user profile');
-          },
+            Icon(
+              Icons.call,
+              size: 100,
+            ),
+            ListView()
+          ],
         ),
-        primary: true,
-        titleSpacing: 15.0,
-        toolbarOpacity: 1.0,
-        textTheme: TextTheme(
-          title: TextStyle(color: Colors.green),
-          button: TextStyle(color: Colors.blue),
+        appBar: AppBar(
+          title: Text('WhatsApp'),
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.search),
+              onPressed: () {},
+            ),
+            PopupMenuButton(
+              icon: Icon(Icons.more_vert),
+              itemBuilder: (context) => [
+                PopupMenuItem(
+                  child: Text("New group"),
+                ),
+                PopupMenuItem(
+                  child: Text("New broadcast"),
+                ),
+                PopupMenuItem(
+                  child: Text("WhatsApp Web"),
+                ),
+                PopupMenuItem(
+                  child: Text("Starred message"),
+                ),
+                PopupMenuItem(
+                  child: Text("Settings"),
+                ),
+              ],
+            ),
+          ],
+          backgroundColor: Color(0xFF005200),
+          bottom: TabBar(
+            tabs: [
+              Tab(icon: Icon(Icons.photo_camera)),
+              Tab(text: 'CHATS'),
+              Tab(text: 'STATUS'),
+              Tab(text: 'CALLS'),
+            ],
+          ),
+        ),
+        drawer: Drawer(
+          child: ListView(
+            children: <Widget>[
+              UserAccountsDrawerHeader(
+                accountName: Text('Bill Gates'),
+                accountEmail: Text('bilgates@gmail.com'),
+                currentAccountPicture: CircleAvatar(
+                  backgroundImage: NetworkImage(
+                      'https://specials-images.forbesimg.com/imageserve/5c76b4b84bbe6f24ad99c370/416x416.jpg?background=000000&cropX1=0&cropX2=4000&cropY1=0&cropY2=4000'),
+                ),
+              ),
+              ListTile(
+                title: Text('Profile'),
+                leading: Icon(Icons.person_outline),
+              ),
+              ListTile(
+                title: Text('Chats'),
+                leading: Icon(Icons.chat),
+              ),
+              ListTile(
+                title: Text('Send'),
+                leading: Icon(Icons.send),
+              ),
+            ],
+          ),
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {},
+          child: Icon(Icons.chat),
+          backgroundColor: Color(0xFF00ff00),
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          selectedItemColor: Colors.blue,
+          items: <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.message),
+              title: Text('Message'),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              title: Text('Home'),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.attach_file),
+              title: Text('Attach'),
+            ),
+          ],
         ),
       ),
-      backgroundColor: Color(0xFF42A5F5),
     );
   }
 }
